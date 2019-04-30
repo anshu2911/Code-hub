@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('code-hub App', () => {
+describe('angular-fundamentals App', () => {
   let page: AppPage;
 
   beforeEach(() => {
