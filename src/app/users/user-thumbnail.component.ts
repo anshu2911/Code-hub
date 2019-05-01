@@ -6,12 +6,17 @@ import { IUsers } from './shared/user.model';
     selector: 'user-thumbnail',
     template: `
     <div class="well howerwell thumbnail">
-        <h2>{{user.login}}</h2>
-        <div>Profile Url: {{user.url}}</div>
-        <div>
-            <span>Location: {{user.type}}</span>
-            <span>&nbsp;</span>
-            <span>{{user.avatar_url}}, {{user.score}}</span>
+        <div class='row'>
+            <div class='col-2 img-section'>
+                <img [src]=user.avatar_url>
+            </div>
+            <div class="col-10">
+                <h3>{{user.login}}</h3>
+                <div class='profile-space'>Profile Url: {{user.url}}</div>
+                <div>Type: {{user.type}}</div>
+                <div>Score: {{user.score}}</div>
+                <button type='text' id='details-btn'>Details</button>
+            </div>
         </div>
     </div>`
 })

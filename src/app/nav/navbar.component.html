@@ -19,9 +19,11 @@
         </li>
       </ul>
       <form id="searchForm" (ngSubmit)="searchUsers(searchTerm)" class="form-inline my-2 my-lg-0">
-        <input [(ngModel)]="searchTerm" name="searchTerm" class="form-control mr-sm-2 rounded-0" type="search" placeholder="Search Sessions"
+        <input [(ngModel)]="searchTerm" name="searchTerm" class="form-control mr-sm-2 search-input" type="search" placeholder="Search Users"
           aria-label="Search">
-        <button class="btn btn-outline-default my-2 my-sm-0 rounded-0" (click)="searchUsers(searchTerm)">Search</button>
+        <div id="search-btn" (click)="searchUsers(searchTerm)">
+          <img [src]="'../assets/images/search.png'">
+        </div>
     </form>
     </div>
   </nav>
