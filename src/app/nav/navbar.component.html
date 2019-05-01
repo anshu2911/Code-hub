@@ -18,9 +18,10 @@
           </div>
         </li>
       </ul>
-      <form id="searchForm" class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search Sessions" aria-label="Search">
-        <button class="btn btn-outline-default my-2 my-sm-0">Search</button>
-      </form> 
+      <form id="searchForm" (ngSubmit)="searchUsers(searchTerm)" class="form-inline my-2 my-lg-0">
+        <input [(ngModel)]="searchTerm" name="searchTerm" class="form-control mr-sm-2 rounded-0" type="search" placeholder="Search Sessions"
+          aria-label="Search">
+        <button class="btn btn-outline-default my-2 my-sm-0 rounded-0" (ngClick)="searchUsers(searchTerm)">Search</button>
+    </form>
     </div>
   </nav>

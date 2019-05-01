@@ -8,10 +8,10 @@ import { IUsers, IUser } from './shared/user.model';
     selector: 'users-list',
     template: `
     <div>
-    <h5>Total Results : {{users.total_count}}</h5>
+    <h5>Total Results : {{totalCount}}</h5>
     <hr>
     <div class="row">
-            <div *ngFor="let user of users.items" class="col-5">
+            <div *ngFor="let user of users" class="col-5">
                 <user-thumbnail [user]="user"></user-thumbnail>
             </div>
         </div>
@@ -19,13 +19,15 @@ import { IUsers, IUser } from './shared/user.model';
     `
 })
 export class UsersListComponent implements OnInit {
-    users: IUsers;
+    users: IUser[];
+    totalCount: number;
     constructor(private userService: UserService) { }
 
     ngOnInit() {
         const searchParam = 'henry';
         this.userService.getUsers(searchParam).subscribe((res: IUsers) => {
-            this.users = res;
+            this.users = res.items;
+            this.totalCount = res.total_count;
         });
     }
 }
