@@ -10,10 +10,10 @@
             Sort By
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Name (A-Z)</a>
-            <a class="dropdown-item" href="#">Name (Z-A)</a>
-            <a class="dropdown-item" href="#">Rank (A-Z)</a>
-            <a class="dropdown-item" href="#">Rank (Z-A)</a>
+            <a class="dropdown-item"  (click)="sortUser('name')">Name (A-Z)</a>
+            <a class="dropdown-item"  (click)="sortUser('name')">Name (Z-A)</a>
+            <a class="dropdown-item"  (click)="sortUser('rank')">Rank (A-Z)</a>
+            <a class="dropdown-item"  (click)="sortUser('rank')">Rank (Z-A)</a>
             
           </div>
         </li>
@@ -21,7 +21,7 @@
       <form id="searchForm" (ngSubmit)="searchUsers(searchTerm)" class="form-inline my-2 my-lg-0">
         <input [(ngModel)]="searchTerm" name="searchTerm" class="form-control mr-sm-2 rounded-0" type="search" placeholder="Search Sessions"
           aria-label="Search">
-        <button class="btn btn-outline-default my-2 my-sm-0 rounded-0" (ngClick)="searchUsers(searchTerm)">Search</button>
+        <button class="btn btn-outline-default my-2 my-sm-0 rounded-0" (click)="searchUsers(searchTerm)">Search</button>
     </form>
     </div>
   </nav>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject} from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IUsers } from './user.model';
 
@@ -7,11 +7,16 @@ import { IUsers } from './user.model';
 export class UserService {
   baseUrl = 'https://api.github.com';
   _searchUser = <BehaviorSubject<IUsers>>new BehaviorSubject({});
+  _sortUser = new BehaviorSubject('name');
 
   constructor(private http: HttpClient) { }
 
   get searchUser() {
     return this._searchUser.asObservable();
+  }
+
+  get sortUser() {
+    return this._sortUser.asObservable();
   }
 
   getUsers(queryParam) {
@@ -22,5 +27,9 @@ export class UserService {
 
   getUser(user) {
     return this.http.get(this.baseUrl + '/users/' + user + '/repos');
+  }
+
+  sortUserData(order) {
+    this._sortUser.next(order);
   }
 }

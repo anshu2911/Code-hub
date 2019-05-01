@@ -18,26 +18,24 @@ import { IUsers, IUser } from './shared/user.model';
     </div>
     `
 })
-export class UsersListComponent implements OnInit, OnChanges {
-    @Input() sortBy: string;
+export class UsersListComponent implements OnInit {
     users: IUser[] = [];
     totalCount: number;
     constructor(private userService: UserService) { }
 
     ngOnInit() {
-        const searchParam = 'henry';
+        this.userService.getUsers('henry');
+
         this.userService.searchUser.subscribe((res: IUsers) => {
             this.users = res.items;
             this.totalCount = res.total_count;
         });
 
-        this.userService.getUsers(searchParam);
-    }
-
-    ngOnChanges() {
-        if (this.users) {
-            this.sortBy === 'name' ? this.users.sort(sortByNameAsc) : this.users.sort(sortByVotesDesc);
-        }
+        this.userService.sortUser.subscribe((sortBy) => {
+            if (this.users) {
+                sortBy === 'name' ? this.users.sort(sortByNameAsc) : this.users.sort(sortByRankDesc);
+            }
+        });
     }
 }
 
@@ -51,7 +49,7 @@ function sortByNameAsc(s1: IUser, s2: IUser) {
     }
 }
 
-function sortByVotesDesc(s1: IUser, s2: IUser) {
+function sortByRankDesc(s1: IUser, s2: IUser) {
     return s2.score - s1.score;
 }
 

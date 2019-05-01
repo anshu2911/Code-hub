@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { appRoutes } from './routes';
+import { RouterModule } from '@angular/router';
 
 
 import { UsersAppComponent } from './users-app.component';
@@ -15,7 +17,8 @@ import { UserService } from './users/shared/user.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   declarations: [
     UsersAppComponent,

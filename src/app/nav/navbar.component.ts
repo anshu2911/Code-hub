@@ -13,4 +13,8 @@ export class NavBarComponent {
     searchUsers(searchTerm) {
         this.userService.getUsers(searchTerm);
     }
+
+    sortUser(order) {
+        this.userService.sortUserData(order);
+    }
 }
