@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   // tslint:disable-next-line:component-selector
   selector: 'users-app',
   template: `
-  <nav-bar></nav-bar>
+  <nav-bar #nav></nav-bar>
   <users-list></users-list>
   `
 })

@@ -25,10 +25,12 @@ export class UsersListComponent implements OnInit {
 
     ngOnInit() {
         const searchParam = 'henry';
-        this.userService.getUsers(searchParam).subscribe((res: IUsers) => {
+        this.userService.searchUser.subscribe((res: IUsers) => {
             this.users = res.items;
             this.totalCount = res.total_count;
         });
+
+        this.userService.getUsers(searchParam);
     }
 }
 
